@@ -16,7 +16,6 @@ class OtpPageState extends State<OtpPage> {
   TextEditingController controller6 = new TextEditingController();
 
   TextEditingController currController = new TextEditingController();
-
   @override
   void dispose() {
     super.dispose();
