@@ -29,7 +29,6 @@ class OtpPageState extends State<OtpPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     currController = controller1;
   }
