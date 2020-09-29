@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:temp/home_screen.dart';
-import 'signup.dart';
-import 'password.dart';
-import 'phoneNumber.dart';
+import 'package:temp/Constant.dart';
+import 'package:temp/OtpPage.dart';
 
-void main() {
-  runApp(MaterialApp(
-    title: 'Flutter',
-    home: LoginScreen(),
-  ));
-}
-
-class LoginScreen extends StatefulWidget {
+class NumberLoginScreen extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<LoginScreen> {
+class _State extends State<NumberLoginScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -71,26 +62,13 @@ class _State extends State<LoginScreen> {
                         //   },
                         decoration: InputDecoration(
                           icon: Icon(Icons.account_circle, color: Colors.white),
-                          hintText: "Username",
+                          hintText: "PhoneNumber",
                           hintStyle: TextStyle(color: Colors.white70),
                         ),
+                        keyboardType: TextInputType.phone,
                       ),
                       SizedBox(
                         height: 20.0,
-                      ),
-                      TextFormField(
-                        // obscureText: true,
-                        // validator: (value){
-                        //   if (value.isEmpty){
-                        //     return"Please enter the user Password";
-                        //   }
-                        // },
-
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.lock, color: Colors.white),
-                          hintText: "Password",
-                          hintStyle: TextStyle(color: Colors.white70),
-                        ),
                       ),
                     ], //<Widget>[]
                   ), //column
@@ -98,29 +76,6 @@ class _State extends State<LoginScreen> {
 
                 SizedBox(
                   height: 10.0,
-                ),
-                FlatButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => Password()));
-                  },
-                  child: Text(
-                    "Forget Password ?",
-                  ),
-                ),
-                SizedBox(
-                  height: 3.0,
-                ),
-                FlatButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => NumberLoginScreen()));
-                  },
-                  child: Text(
-                    "Login with your phone number",
-                  ),
                 ),
 
                 Container(
@@ -150,7 +105,7 @@ class _State extends State<LoginScreen> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
+                                  builder: (context) => OtpPage()));
                         }
                         // else{
                         //    scaffoldKey.currentState.showSnackBar(SnackBar(
@@ -160,7 +115,7 @@ class _State extends State<LoginScreen> {
                         // }
                       },
                       child: Text(
-                        "LOGIN",
+                        "send OTP",
                         style: TextStyle(color: Colors.white),
                       ), //Text
                     ), //RaisedButt
@@ -168,25 +123,6 @@ class _State extends State<LoginScreen> {
                 ), //Container
                 SizedBox(
                   height: 10.0,
-                ),
-
-                Text(
-                  'Do you want to create a new account?',
-                  textAlign: TextAlign.center,
-                ),
-                FlatButton(
-                  textColor: Colors.blue,
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {
-                    //signup screen
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SignUpScreen()));
-                  },
                 ),
               ], //Widget
             ), // new Column
