@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:temp/phoneNumber.dart';
 import 'Home_Screen.dart';
 
 class OtpPage extends StatefulWidget {
+  String value;
+  OtpPage({Key key, @required this.value}) : super(key: key);
   @override
-  OtpPageState createState() => OtpPageState();
+  OtpPageState createState() => OtpPageState(value);
 }
 
 class OtpPageState extends State<OtpPage> {
+  String value;
+  OtpPageState(this.value);
   TextEditingController controller1 = new TextEditingController();
   TextEditingController controller2 = new TextEditingController();
   TextEditingController controller3 = new TextEditingController();
   TextEditingController controller4 = new TextEditingController();
   TextEditingController controller5 = new TextEditingController();
   TextEditingController controller6 = new TextEditingController();
-
   TextEditingController currController = new TextEditingController();
   @override
   void dispose() {
@@ -180,11 +184,32 @@ class OtpPageState extends State<OtpPage> {
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => NumberLoginScreen()));
+          },
+        ),
         title: Text("Enter OTP"),
-        backgroundColor: Colors.grey[300],
+        backgroundColor: Color(0xFFE91E63),
       ),
       backgroundColor: Color(0xFFeaeaea),
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0.1, 0.4, 0.7, 0.9],
+            colors: [
+              Colors.orange[600],
+              Colors.orange[500],
+              Colors.orange[300],
+              Colors.orange[200],
+            ],
+          ),
+        ), //LinearGradient
+
         child: Column(
           children: <Widget>[
             Flexible(
@@ -204,7 +229,7 @@ class OtpPageState extends State<OtpPage> {
                     padding: const EdgeInsets.only(
                         left: 16.0, top: 4.0, right: 16.0),
                     child: Text(
-                      "Please type the verification code sent to",
+                      "Please type the verification code sent to ",
                       style: TextStyle(
                           fontSize: 15.0, fontWeight: FontWeight.normal),
                       textAlign: TextAlign.center,
@@ -214,7 +239,9 @@ class OtpPageState extends State<OtpPage> {
                     padding: const EdgeInsets.only(
                         left: 30.0, top: 2.0, right: 30.0),
                     child: Text(
-                      "+91 7339629247",
+                      // Retrieve the text the that user has entered by using the
+                      // TextEditingController.
+                      value,
                       style: TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,

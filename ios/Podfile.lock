@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - nexmo_verify (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - nexmo_verify (from `.symlinks/plugins/nexmo_verify/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  nexmo_verify:
+    :path: ".symlinks/plugins/nexmo_verify/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  nexmo_verify: c385ea517133523bf61c76bd0d38762cedc08b51
+
+PODFILE CHECKSUM: c34e2287a9ccaa606aeceab922830efb9a6ff69a
+
+COCOAPODS: 1.9.1

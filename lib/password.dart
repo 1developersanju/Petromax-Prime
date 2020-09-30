@@ -7,7 +7,7 @@ class Password extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.pink),
+            icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => LoginScreen()));
