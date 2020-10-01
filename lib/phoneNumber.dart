@@ -119,13 +119,14 @@ class NumberLoginScreen extends StatelessWidget {
                       ), //BoxDecoration
                       child: new RaisedButton(
                         onPressed: () {
-                          var url =
+                          /*  var url =
                               "https://2factor.in/API/V1/7899a968-02d4-11eb-9fa5-0200cd936042/SMS/{phone_number}/{otp_val}";
                           var phoneNumber = myController.text;
                           var otp = getRandomNumber();
                           url = url.replaceAll('{phone_number}', phoneNumber);
                           url = url.replaceAll('{otp_val}', otp.toString());
                           sendOTP(url);
+                          */
                           // return showDialog(
                           //   context: context,
                           //   builder: (context) {

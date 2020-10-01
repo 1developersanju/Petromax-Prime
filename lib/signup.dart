@@ -1,191 +1,188 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'package:validators/validators.dart' as validator;
 //import 'firstpage.dart';
-import 'package:temp/home_screen.dart';
+import 'model.dart';
 
-class SignUpScreen extends StatefulWidget {
+void main() => runApp(SignUpScreen());
+
+class SignUpScreen extends StatelessWidget {
   @override
-  _State createState() => _State();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()));
+            },
+          ),
+          title: Text('Entertine,Engage and Enjoy'),
+          backgroundColor: Color(0xFFE91E63),
+        ),
+        body: TestForm(),
+      ),
+    );
+  }
 }
 
-class _State extends State<SignUpScreen> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-  final scaffoldKey = GlobalKey<ScaffoldState>();
+class TestForm extends StatefulWidget {
+  @override
+  _TestFormState createState() => _TestFormState();
+}
+
+class _TestFormState extends State<TestForm> {
+  final _formKey = GlobalKey<FormState>();
+  Model model = Model();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-            title: Text('Entertine,Engage and Enjoy'),
-            backgroundColor: Color(0xFFE91E63)),
-        key: scaffoldKey,
-        body: new Container(
-          width: double.infinity,
+    final halfMediaWidth = MediaQuery.of(context).size.width / 2.0;
+    return new Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          stops: [0.1, 0.4, 0.7, 0.9],
+          colors: [
+            Colors.blue[600],
+            Colors.red[500],
+            Colors.pink[300],
+            Colors.blue[200],
+          ],
+        ),
+      ), //LinearGradient
 
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              stops: [0.1, 0.4, 0.7, 0.9],
-              colors: [
-                Colors.blue[600],
-                Colors.red[500],
-                Colors.pink[300],
-                Colors.blue[200],
-              ],
-            ),
-          ), //LinearGradient
-
-          child: Center(
-            child: new ListView(
-              children: <Widget>[
-                SizedBox(
-                  height: 20.0,
-                ),
-
-                Form(
-                  key: formKey,
-                  child: Column(
-                    children: <Widget>[
-                      TextFormField(
-                        // validator:(value){
-                        //   if (value.isEmpty){
-                        //     return"Please enter the user name";
-                        //   }else if(value.length>8){
-                        //     return "Username should not exceed 8 characters!";
-                        //   }
-
-                        //   },
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.account_circle, color: Colors.white),
-                          hintText: "Username",
-                          hintStyle: TextStyle(color: Colors.white70),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      TextFormField(
-                        // validator: (value){
-                        //   if (value.isEmpty){
-                        //     return"Please enter your Email id";
-                        //   }
-                        // },
-
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.contact_mail, color: Colors.white),
-                          hintText: "Email id",
-                          hintStyle: TextStyle(color: Colors.white70),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      TextFormField(
-                        obscureText: true,
-                        // validator: (value){
-                        //   if (value.isEmpty){
-                        //     return"Please enter the user Password";
-                        //   }
-                        // },
-
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.lock, color: Colors.white),
-                          hintText: "Password",
-                          hintStyle: TextStyle(color: Colors.white70),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      TextFormField(
-                        obscureText: true,
-                        // validator: (value){
-                        //   if (value.isEmpty){
-                        //     return"Please confirm the Password";
-                        //   }
-                        // },
-
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.lock, color: Colors.white),
-                          hintText: "Confirm Password",
-                          hintStyle: TextStyle(color: Colors.white70),
-                        ),
-                      ),
-                    ], //<Widget>[]
-                  ), //column
-                ), //Form
-
-                SizedBox(
-                  height: 10.0,
-                ),
-
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      stops: [0.1, 0.4, 0.7, 0.9],
-                      colors: [
-                        Colors.pink[800],
-                        Colors.pink[500],
-                        Colors.pink[500],
-                        Colors.pink[800]
-                      ],
-                    ), //LinearGradient
-                  ), //BoxDecoration
-                  child: ButtonTheme(
-                    buttonColor: Colors.white10,
-                    height: 50.0,
-                    minWidth: double.infinity,
-                    child: RaisedButton(
-                      onPressed: () {
-                        if (formKey.currentState.validate()) {
-                          scaffoldKey.currentState.showSnackBar(SnackBar(
-                            content: Text("Form Validated Successfully"),
-                          ));
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
-                        } else {
-                          scaffoldKey.currentState.showSnackBar(SnackBar(
-                            content: Text("Error in Form"),
-                          ));
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.topCenter,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.topCenter,
+                    width: halfMediaWidth,
+                    child: MyTextFormField(
+                      hintText: 'User Name',
+                      validator: (String value) {
+                        if (value.isEmpty) {
+                          return 'Enter User Name';
                         }
+                        return null;
                       },
-                      child: Text(
-                        "LOGIN",
-                        style: TextStyle(color: Colors.white),
-                      ), //Text
-                    ), //RaisedButton
-                  ), //ButtonTheme
-                ), //Container
-                SizedBox(
-                  height: 10.0,
-                ),
-
-                Text(
-                  'Alrady have an account?',
-                  textAlign: TextAlign.center,
-                ),
-                FlatButton(
-                  textColor: Colors.blue,
-                  child: Text(
-                    'Sign in',
-                    style: TextStyle(fontSize: 20),
+                      onSaved: (String value) {
+                        model.userName = value;
+                      },
+                    ),
                   ),
-                  onPressed: () {
-                    //signup screen
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
-                  },
+                ],
+              ),
+            ),
+            MyTextFormField(
+              hintText: 'Email',
+              isEmail: true,
+              validator: (String value) {
+                if (!validator.isEmail(value)) {
+                  return 'Please enter a valid email';
+                }
+                return null;
+              },
+              onSaved: (String value) {
+                model.email = value;
+              },
+            ),
+            MyTextFormField(
+              hintText: 'Password',
+              isPassword: true,
+              validator: (String value) {
+                if (value.length < 7) {
+                  return 'Password should be minimum 7 characters';
+                }
+
+                _formKey.currentState.save();
+
+                return null;
+              },
+              onSaved: (String value) {
+                model.password = value;
+              },
+            ),
+            MyTextFormField(
+              hintText: 'Confirm Password',
+              isPassword: true,
+              validator: (String value) {
+                if (value.length < 7) {
+                  return 'Password should be minimum 7 characters';
+                } else if (model.password != null && value != model.password) {
+                  print(value);
+                  print(model.password);
+                  return 'Password not matched';
+                }
+
+                return null;
+              },
+            ),
+            RaisedButton(
+              color: Colors.redAccent,
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  _formKey.currentState.save();
+
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                }
+              },
+              child: Text(
+                'Sign Up',
+                style: TextStyle(
+                  color: Colors.white,
                 ),
-              ], //Widget
-            ), // new Column
-          ), //Center
-        )); //Container //Scaffold
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyTextFormField extends StatelessWidget {
+  final String hintText;
+  final Function validator;
+  final Function onSaved;
+  final bool isPassword;
+  final bool isEmail;
+
+  MyTextFormField({
+    this.hintText,
+    this.validator,
+    this.onSaved,
+    this.isPassword = false,
+    this.isEmail = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: TextFormField(
+        decoration: InputDecoration(
+          hintText: hintText,
+          contentPadding: EdgeInsets.all(15.0),
+          border: InputBorder.none,
+          filled: true,
+          fillColor: Colors.grey[200],
+        ),
+        obscureText: isPassword ? true : false,
+        validator: validator,
+        onSaved: onSaved,
+        keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
+      ),
+    );
   }
 }

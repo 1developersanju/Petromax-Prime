@@ -71,7 +71,7 @@ class _State extends State<LoginScreen> {
                         //   },
                         decoration: InputDecoration(
                           icon: Icon(Icons.account_circle, color: Colors.white),
-                          hintText: "Username",
+                          hintText: "Username/Email",
                           hintStyle: TextStyle(color: Colors.white70),
                         ),
                       ),

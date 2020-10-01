@@ -25,7 +25,7 @@ dependencies:
   nexmo_verify: ^1.0.1
   http: ^0.12.2
   shared_preferences: ^0.5.12
-
+  validators: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
