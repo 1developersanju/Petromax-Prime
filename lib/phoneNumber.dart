@@ -8,7 +8,7 @@ import 'package:temp/main.dart';
 class NumberLoginScreen extends StatelessWidget {
   final myController = TextEditingController();
 
-  String value;
+  String phoneNumber;
   Future<http.Response> sendOTP(url) {
     print("Sending otp..");
     return http.get(url);
@@ -88,7 +88,7 @@ class NumberLoginScreen extends StatelessWidget {
                           enabled: true,
                           keyboardType: TextInputType.number,
                           onChanged: (text) {
-                            value = text;
+                            phoneNumber = text;
                           },
                           textInputAction: TextInputAction.done,
                           style: TextStyle(fontSize: 20.0, color: Colors.black),
@@ -119,29 +119,21 @@ class NumberLoginScreen extends StatelessWidget {
                       ), //BoxDecoration
                       child: new RaisedButton(
                         onPressed: () {
-                          /*  var url =
+                          var url =
                               "https://2factor.in/API/V1/7899a968-02d4-11eb-9fa5-0200cd936042/SMS/{phone_number}/{otp_val}";
+
                           var phoneNumber = myController.text;
                           var otp = getRandomNumber();
                           url = url.replaceAll('{phone_number}', phoneNumber);
                           url = url.replaceAll('{otp_val}', otp.toString());
+
                           sendOTP(url);
-                          */
-                          // return showDialog(
-                          //   context: context,
-                          //   builder: (context) {
-                          //     return AlertDialog(
-                          //       // Retrieve the text the that user has entered by using the
-                          //       // TextEditingController.
-                          //       content: Text(url),
-                          //     );
-                          //   },
-                          // );
 
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => OtpPage(value: value)));
+                                  builder: (context) =>
+                                      OtpPage(phoneNumber: phoneNumber)));
                         },
                         child: Text("send OTP"),
                         textColor: Colors.white,

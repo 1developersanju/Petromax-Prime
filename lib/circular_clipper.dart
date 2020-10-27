@@ -6,13 +6,13 @@ class CircularClipper extends CustomClipper<Path> {
     var path = Path();
     path.lineTo(0.0, size.height - 50);
     path.quadraticBezierTo(
-      size.width / 2,
+      size.width / 4,
       size.height,
-      size.width,
+      size.width / 2,
       size.height,
     );
     path.quadraticBezierTo(
-      size.width - size.width / 2,
+      size.width - size.width / 4,
       size.height,
       size.width,
       size.height - 50,

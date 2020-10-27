@@ -97,6 +97,56 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                ' MENU ',
+                style: TextStyle(fontSize: 30),
+                textAlign: TextAlign.center,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.redAccent,
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Edit Profile',
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ViralVirus()));
+              },
+            ),
+            ListTile(
+              title: Text('Password Settings'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ViralVirus()));
+              },
+            ),
+            ListTile(
+              title: Text('Suggestion on Your View '),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ViralVirus()));
+              },
+            ),
+            ListTile(
+              title: Text('Search Talents Across You'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ViralVirus()));
+              },
+            ),
+          ],
+        ),
+      ),
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
@@ -104,13 +154,14 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Image(
           image: AssetImage('assets/splash.png'),
         ),
-        leading: IconButton(
+
+        /* leading: IconButton(
           padding: EdgeInsets.only(left: 30.0),
-          onPressed: () => print('Menu'),
+          onPressed: () {},
           icon: Icon(Icons.menu),
           iconSize: 30.0,
           color: Colors.black,
-        ),
+        ),*/
         actions: <Widget>[
           IconButton(
             padding: EdgeInsets.only(right: 30.0),

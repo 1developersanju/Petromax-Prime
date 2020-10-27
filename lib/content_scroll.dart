@@ -33,7 +33,7 @@ class ContentScroll extends StatelessWidget {
                 onTap: () => print('View $title'),
                 child: Icon(
                   Icons.arrow_forward,
-                  color: Colors.black,
+                  color: Colors.red,
                   size: 30.0,
                 ),
               ),

@@ -4,15 +4,20 @@ import 'package:temp/phoneNumber.dart';
 import 'Home_Screen.dart';
 
 class OtpPage extends StatefulWidget {
-  String value;
-  OtpPage({Key key, @required this.value}) : super(key: key);
+  String phoneNumber;
+  String sentOtp;
+
+  OtpPage({Key key, @required this.phoneNumber, sentOtp}) : super(key: key);
   @override
-  OtpPageState createState() => OtpPageState(value);
+  OtpPageState createState() => OtpPageState(
+        phoneNumber,
+        sentOtp,
+      );
 }
 
 class OtpPageState extends State<OtpPage> {
-  String value;
-  OtpPageState(this.value);
+  String sentOtp;
+  OtpPageState(this.phoneNumber, sentOtp);
   TextEditingController controller1 = new TextEditingController();
   TextEditingController controller2 = new TextEditingController();
   TextEditingController controller3 = new TextEditingController();
@@ -20,7 +25,15 @@ class OtpPageState extends State<OtpPage> {
   TextEditingController controller5 = new TextEditingController();
   TextEditingController controller6 = new TextEditingController();
   TextEditingController currController = new TextEditingController();
+
   @override
+  String codeOne;
+  String codeTwo;
+  String codeThree;
+  String codeFour;
+  String codeFive;
+  String codeSix;
+  String phoneNumber;
   void dispose() {
     super.dispose();
     controller1.dispose();
@@ -61,6 +74,9 @@ class OtpPageState extends State<OtpPage> {
               ],
               enabled: false,
               controller: controller1,
+              onChanged: (text) {
+                codeOne = text;
+              },
               autofocus: false,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 24.0, color: Colors.black),
@@ -83,6 +99,9 @@ class OtpPageState extends State<OtpPage> {
             autofocus: false,
             enabled: false,
             keyboardType: TextInputType.number,
+            onChanged: (text) {
+              codeTwo = text;
+            },
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 24.0, color: Colors.black),
           ),
@@ -102,6 +121,9 @@ class OtpPageState extends State<OtpPage> {
               LengthLimitingTextInputFormatter(1),
             ],
             keyboardType: TextInputType.number,
+            onChanged: (text) {
+              codeThree = text;
+            },
             controller: controller3,
             textAlign: TextAlign.center,
             autofocus: false,
@@ -123,6 +145,9 @@ class OtpPageState extends State<OtpPage> {
             inputFormatters: [
               LengthLimitingTextInputFormatter(1),
             ],
+            onChanged: (text) {
+              codeFour = text;
+            },
             textAlign: TextAlign.center,
             controller: controller4,
             autofocus: false,
@@ -141,6 +166,9 @@ class OtpPageState extends State<OtpPage> {
                   width: 1.0, color: Color.fromRGBO(0, 0, 0, 0.1)),
               borderRadius: new BorderRadius.circular(4.0)),
           child: new TextField(
+            onChanged: (text) {
+              codeFive = text;
+            },
             inputFormatters: [
               LengthLimitingTextInputFormatter(1),
             ],
@@ -165,6 +193,9 @@ class OtpPageState extends State<OtpPage> {
             inputFormatters: [
               LengthLimitingTextInputFormatter(1),
             ],
+            onChanged: (text) {
+              codeSix = text;
+            },
             textAlign: TextAlign.center,
             controller: controller6,
             autofocus: false,
@@ -241,7 +272,7 @@ class OtpPageState extends State<OtpPage> {
                     child: Text(
                       // Retrieve the text the that user has entered by using the
                       // TextEditingController.
-                      value,
+                      '+91 ' + phoneNumber,
                       style: TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,
@@ -513,21 +544,12 @@ class OtpPageState extends State<OtpPage> {
   }
 
   void matchOtp() {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Successfully"),
-            content: Text("Otp matched successfully."),
-            actions: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.check),
-                  onPressed: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
-                  })
-            ],
-          );
-        });
+    String code = '$codeOne' +
+        '$codeTwo' +
+        '$codeThree' +
+        '$codeFour' +
+        '$codeFive' +
+        '$codeSix';
+    print(code);
   }
 }

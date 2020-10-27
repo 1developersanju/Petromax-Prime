@@ -1,8 +1,9 @@
-body: new ListView.builder(itemBuilder: (context, index){
-  return new HorizList();
+body()
+   ListView.builder(itemBuilder (context, index){
+  return new Test();
   })
 
-class HorizList extends StatelessWidget{
+class Test extends StatelessWidget{
  @override
  Widget build(BuildContext context) {
    return new Container(
