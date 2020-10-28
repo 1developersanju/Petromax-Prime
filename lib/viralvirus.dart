@@ -39,13 +39,13 @@ class ViralVirus extends StatelessWidget {
               CupertinoActionSheetAction(
                 child: Text("Cinematographer"),
                 onPressed: () {
-                  print("you wanted good Music Cinematographers");
+                  print("you wanted good Cinematographers");
                 },
               ),
               CupertinoActionSheetAction(
                 child: Text("Writers"),
                 onPressed: () {
-                  print("you wanted good Music Writers,iss it!");
+                  print("you wanted good Writers,iss it!");
                 },
               ),
               CupertinoActionSheetAction(

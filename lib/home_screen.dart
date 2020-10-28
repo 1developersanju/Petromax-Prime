@@ -4,6 +4,8 @@ import 'movie_model.dart';
 import 'movie_screen.dart';
 import 'content_scroll.dart';
 import 'viralvirus.dart';
+import 'technovirus.dart';
+import 'package:flutter/cupertino.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -119,22 +121,58 @@ class _HomeScreenState extends State<HomeScreen> {
                 'Edit Profile',
               ),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ViralVirus()));
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) => CupertinoAlertDialog(
+                            title: Text("Alart"),
+                            content: Text("This page is on process.."),
+                            actions: <Widget>[
+                              CupertinoDialogAction(
+                                isDefaultAction: true,
+                                child: Text("ok"),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              )
+                            ]));
               },
             ),
             ListTile(
               title: Text('Password Settings'),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ViralVirus()));
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) => CupertinoAlertDialog(
+                            title: Text("Alart"),
+                            content: Text("This page is on process.."),
+                            actions: <Widget>[
+                              CupertinoDialogAction(
+                                isDefaultAction: true,
+                                child: Text("ok"),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              )
+                            ]));
               },
             ),
             ListTile(
               title: Text('Suggestion on Your View '),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ViralVirus()));
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) => CupertinoAlertDialog(
+                            title: Text("Alart"),
+                            content: Text("This page is on process.."),
+                            actions: <Widget>[
+                              CupertinoDialogAction(
+                                isDefaultAction: true,
+                                child: Text("ok"),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              )
+                            ]));
               },
             ),
             ListTile(
@@ -151,10 +189,10 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         elevation: 0.0,
-        title: Image(
+        /*title: Image(
           image: AssetImage('assets/splash.png'),
         ),
-
+*/
         /* leading: IconButton(
           padding: EdgeInsets.only(left: 30.0),
           onPressed: () {},
@@ -216,10 +254,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Center(
                       child: FlatButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ViralVirus()));
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  CupertinoAlertDialog(
+                                      title: Text("Sorry"),
+                                      content: Text("No content is added.."),
+                                      actions: <Widget>[
+                                        CupertinoDialogAction(
+                                          isDefaultAction: true,
+                                          child: Text("OKAY"),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        )
+                                      ]));
                         },
                         child: Text(
                           labels[index].toUpperCase(),

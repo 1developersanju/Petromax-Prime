@@ -26,6 +26,8 @@ class OtpPageState extends State<OtpPage> {
   TextEditingController controller6 = new TextEditingController();
   TextEditingController currController = new TextEditingController();
 
+  String phoneNumber;
+
   @override
   String codeOne;
   String codeTwo;
@@ -33,7 +35,6 @@ class OtpPageState extends State<OtpPage> {
   String codeFour;
   String codeFive;
   String codeSix;
-  String phoneNumber;
   void dispose() {
     super.dispose();
     controller1.dispose();
@@ -78,6 +79,7 @@ class OtpPageState extends State<OtpPage> {
                 codeOne = text;
               },
               autofocus: false,
+              keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 24.0, color: Colors.black),
             )),
@@ -544,12 +546,12 @@ class OtpPageState extends State<OtpPage> {
   }
 
   void matchOtp() {
-    String code = '$codeOne' +
+    String code = "$codeOne" +
         '$codeTwo' +
         '$codeThree' +
         '$codeFour' +
         '$codeFive' +
         '$codeSix';
-    print(code);
+    print("$code");
   }
 }
