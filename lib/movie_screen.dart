@@ -12,6 +12,8 @@ class MovieScreen extends StatefulWidget {
 }
 
 class _MovieScreenState extends State<MovieScreen> {
+  Color _favIconColor = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,10 +55,23 @@ class _MovieScreenState extends State<MovieScreen> {
                   ),
                   IconButton(
                     padding: EdgeInsets.only(left: 30.0),
-                    onPressed: () => print('Add to Favorites'),
-                    icon: Icon(Icons.favorite_border),
+                    onPressed: () {
+                      setState(() {
+                        print("Add to favourites");
+                        if (_favIconColor == Colors.white) {
+                          _favIconColor = Colors.red;
+                          print("Add to favourites");
+                        } else {
+                          _favIconColor = Colors.white;
+                          print("remove from favourites");
+                        }
+                      });
+                    },
+                    icon: Icon(
+                      Icons.favorite,
+                    ),
                     iconSize: 30.0,
-                    color: Colors.black,
+                    color: _favIconColor,
                   ),
                 ],
               ),
@@ -82,8 +97,8 @@ class _MovieScreenState extends State<MovieScreen> {
                 bottom: 0.0,
                 left: 20.0,
                 child: IconButton(
-                  onPressed: () => print('Add to My List'),
-                  icon: Icon(Icons.add),
+                  onPressed: () => print('Download this video'),
+                  icon: Icon(Icons.file_download),
                   iconSize: 40.0,
                   color: Colors.black,
                 ),

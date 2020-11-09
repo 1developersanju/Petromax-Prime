@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:temp/Constant.dart';
+import 'package:temp/home_screen.dart';
 import 'package:temp/phoneNumber.dart';
-import 'Home_Screen.dart';
+import 'home_Screen.dart';
 
 class OtpPage extends StatefulWidget {
   String phoneNumber;
@@ -461,7 +463,11 @@ class OtpPageState extends State<OtpPage> {
                           ),
                           MaterialButton(
                               onPressed: () {
-                                matchOtp();
+                                //matchOtp();
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginPage()));
                               },
                               child: Image.asset('assets/images/success.png',
                                   width: 25.0, height: 25.0)),

@@ -26,6 +26,9 @@ dependencies:
   http: ^0.12.2
   shared_preferences: ^0.5.12
   validators: ^2.0.0+1
+  image_picker: ^0.6.7+12
+  provider: ^3.1.0
+  font_awesome_flutter: ^8.8.1
 
 
 
@@ -65,6 +68,7 @@ flutter:
     - assets/image_13.jpeg
     - assets/delete.png
     - assets/success.png
+    - assets/SwipeCard.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

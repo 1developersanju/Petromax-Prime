@@ -89,3 +89,10 @@ final List<String> popular = [
   'assets/image_10.jpeg',
   'assets/image_13.jpeg',
 ];
+
+final List<String> downloads = [
+  'assets/image_5.jpeg',
+  'assets/image_8.jpeg',
+  'assets/image_10.jpeg',
+  'assets/image_12.jpeg',
+];

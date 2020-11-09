@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:temp/Fav.dart';
 
-class ContentScroll extends StatelessWidget {
+class ContentScroll1 extends StatelessWidget {
   final List<String> images;
-  final String title;
   final double imageHeight;
   final double imageWidth;
 
-  ContentScroll({
+  ContentScroll1({
     this.images,
-    this.title,
     this.imageHeight,
     this.imageWidth,
   });
@@ -19,42 +17,23 @@ class ContentScroll extends StatelessWidget {
     return Column(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 40.0),
+          padding: EdgeInsets.symmetric(horizontal: 50.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => FavScreen()));
-                },
-                child: Icon(
-                  Icons.arrow_forward,
-                  color: Colors.red,
-                  size: 30.0,
-                ),
-              ),
-            ],
+            children: <Widget>[],
           ),
         ),
         Container(
           height: imageHeight,
           child: ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 30.0),
+            padding: EdgeInsets.symmetric(horizontal: 0.0),
             scrollDirection: Axis.horizontal,
             itemCount: images.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 margin: EdgeInsets.symmetric(
                   horizontal: 10.0,
-                  vertical: 20.0,
+                  vertical: 10.0,
                 ),
                 width: imageWidth,
                 decoration: BoxDecoration(
@@ -62,7 +41,7 @@ class ContentScroll extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black54,
-                      offset: Offset(0.0, 4.0),
+                      offset: Offset(6.0, 4.0),
                       blurRadius: 6.0,
                     ),
                   ],

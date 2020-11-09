@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:temp/profile.dart';
+import 'package:temp/settings.dart';
 import 'package:temp/viralvirus.dart';
 import 'movie_model.dart';
 import 'movie_screen.dart';
 import 'content_scroll.dart';
 import 'viralvirus.dart';
-import 'technovirus.dart';
 import 'package:flutter/cupertino.dart';
+import 'Fav.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -67,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image(
                         image: AssetImage(movies[index].imageUrl),
-                        height: 220.0,
+                        height: 330.0,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -108,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             DrawerHeader(
               child: Text(
-                ' MENU ',
+                ' MENU CARD ',
                 style: TextStyle(fontSize: 30),
                 textAlign: TextAlign.center,
               ),
@@ -121,45 +123,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 'Edit Profile',
               ),
               onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) => CupertinoAlertDialog(
-                            title: Text("Alart"),
-                            content: Text("This page is on process.."),
-                            actions: <Widget>[
-                              CupertinoDialogAction(
-                                isDefaultAction: true,
-                                child: Text("ok"),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              )
-                            ]));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfileApp()));
               },
             ),
             ListTile(
-              title: Text('Password Settings'),
+              title: Text('Settings'),
               onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) => CupertinoAlertDialog(
-                            title: Text("Alart"),
-                            content: Text("This page is on process.."),
-                            actions: <Widget>[
-                              CupertinoDialogAction(
-                                isDefaultAction: true,
-                                child: Text("ok"),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              )
-                            ]));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()));
               },
             ),
             ListTile(
-              title: Text('Suggestion on Your View '),
-              onTap: () {
-                showDialog(
+                title: Text('Suggestion on Your View '),
+                onTap: () {
+                  /* showDialog(
                     context: context,
                     builder: (BuildContext context) => CupertinoAlertDialog(
                             title: Text("Alart"),
@@ -173,8 +151,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                               )
                             ]));
-              },
-            ),
+              */
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => ()));
+                }),
             ListTile(
               title: Text('Search Talents Across You'),
               onTap: () {
@@ -206,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () => print('Search'),
             icon: Icon(Icons.search),
             iconSize: 30.0,
-            color: Colors.black,
+            color: Colors.amber,
           ),
         ],
       ),
@@ -294,7 +274,14 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 10.0),
           ContentScroll(
             images: popular,
-            title: 'Popular',
+            title: 'Recents',
+            imageHeight: 250.0,
+            imageWidth: 150.0,
+          ),
+          SizedBox(height: 10.0),
+          ContentScroll(
+            images: downloads,
+            title: 'Downloads',
             imageHeight: 250.0,
             imageWidth: 150.0,
           ),
